@@ -142,7 +142,9 @@
 <p>当您开始比较相同的文件时，关闭WinMerge（在显示信息对话框之后）。比较后该参数无效，例如，如果文件由于合并或编辑而变得相同。当您将WinMerge用作外部比较应用程序时，或者要通过忽略没有任何差异的文件来消除不必要的步骤时，此参数很有用。</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/xq</span><br></pre></td></tr></table></figure>
 
-<p>与<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">``` bat</span><br><span class="line">/s</span><br></pre></td></tr></table></figure></p>
+<p>与/x相似，但不显示有关相同文件的消息。</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/s</span><br></pre></td></tr></table></figure>
+
 <p>将WinMerge窗口限制为单个实例。例如，如果WinMerge已在运行，则在同一实例中打开一个新比较。如果没有此参数，则允许多个窗口：根据其他设置，可能会在现有窗口或新窗口中打开一个新的比较。</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ul</span><br></pre></td></tr></table></figure>
 
@@ -182,9 +184,15 @@
 <p>将焦点放在启动时的右侧</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dl</span><br></pre></td></tr></table></figure>
 
-<p>在左侧标题栏中指定说明，以覆盖默认的文件夹或文件名文本。例如：<figure class="highlight plain"><figcaption><span>"Version 1.0"``` 或 ```/dl WorkingCopy```。在包含空格的说明周围使用引号。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">``` bat</span><br><span class="line">/dm</span><br></pre></td></tr></table></figure></p>
-<p>与<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">``` bat</span><br><span class="line">/dr</span><br></pre></td></tr></table></figure></p>
-<p>与<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">``` bat</span><br><span class="line">leftpath</span><br></pre></td></tr></table></figure></p>
+<p>在左侧标题栏中指定说明，以覆盖默认的文件夹或文件名文本。例如：/dl “Version 1.0” 或 /dl WorkingCopy。在包含空格的说明周围使用引号。</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dm</span><br></pre></td></tr></table></figure>
+
+<p>与/dl一样，在中间标题栏中指定描述。</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dr</span><br></pre></td></tr></table></figure>
+
+<p>与/dl一样，在右侧标题栏中指定描述。</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">leftpath</span><br></pre></td></tr></table></figure>
+
 <p>指定要在左侧打开的文件夹，文件或项目文件。</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">middlepath</span><br></pre></td></tr></table></figure>
 
