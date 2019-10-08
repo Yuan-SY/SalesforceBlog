@@ -128,78 +128,75 @@
 <p>WinMerge命令行除了要比较的路径外，还接受其他几个参数。这些参数大多数用于将WinMerge用作外部比较应用程序或从批处理文件。</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">"路径/WinMerge.exe" [/r] [/e] [/f filter] [/x] [/xq] [/s] [/ul] [/um] [/ur] [/u] [/wl] [/wm] [/wr]</span><br><span class="line">  [/minimize] [/maximize] [/fl] [/fm] [/fr] [/dl leftdesc] [/dm middledesc] [/dr rightdesc] leftpath [middlepath] rightpath [/o outputpath] [/al] [/am] [/ar]</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/r</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /r</span><br></pre></td></tr></table></figure>
 
 <p>比较所有子文件夹中的所有文件（递归比较）。唯一文件夹（仅出现在一侧）在比较结果中作为单独的项目列出。请注意，包含子文件夹可能会大大增加比较时间。如果没有此参数，WinMerge仅在两个目标文件夹的顶层列出文件和子文件夹。它不比较子文件夹。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/e</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /e</span><br></pre></td></tr></table></figure>
 
 <p>使您可以通过按一次Esc键关闭WinMerge。当您将WinMerge用作外部比较应用程序时，这很有用：您可以像对话框一样快速关闭WinMerge。如果没有此参数，则可能必须多次按Esc键才能关闭其所有窗口。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/f</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /f</span><br></pre></td></tr></table></figure>
 
 <p>应用指定的过滤器以限制比较。筛选器可以是* .h * .cpp之类的文件掩码，也可以是XML / HTML Devel之类的文件筛选器的名称。在包含空格的过滤器掩码或名称周围添加引号。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/x</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /x</span><br></pre></td></tr></table></figure>
 
 <p>当您开始比较相同的文件时，关闭WinMerge（在显示信息对话框之后）。比较后该参数无效，例如，如果文件由于合并或编辑而变得相同。当您将WinMerge用作外部比较应用程序时，或者要通过忽略没有任何差异的文件来消除不必要的步骤时，此参数很有用。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/xq</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /xq</span><br></pre></td></tr></table></figure>
 
 <p>与/x相似，但不显示有关相同文件的消息。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/s</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /s</span><br></pre></td></tr></table></figure>
 
 <p>将WinMerge窗口限制为单个实例。例如，如果WinMerge已在运行，则在同一实例中打开一个新比较。如果没有此参数，则允许多个窗口：根据其他设置，可能会在现有窗口或新窗口中打开一个新的比较。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ul</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /ul</span><br></pre></td></tr></table></figure>
 
 <p>阻止WinMerge将左侧路径添加到“最近使用（MRU）”列表中。外部应用程序不应在“选择文件或文件夹”对话框中向MRU列表添加路径。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/um</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /um</span><br></pre></td></tr></table></figure>
 
 <p>防止WinMerge将中间路径添加到“最近使用（MRU）”列表中。外部应用程序不应在“选择文件或文件夹”对话框中向MRU列表添加路径。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/ur</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /ur</span><br></pre></td></tr></table></figure>
 
 <p>阻止WinMerge将正确的路径添加到“最近使用（MRU）”列表中。外部应用程序不应在“选择文件或文件夹”对话框中向MRU列表添加路径。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/u</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /u</span><br></pre></td></tr></table></figure>
 
 <p>防止WinMerge将路径（左或右）添加到“最近使用”（MRU）列表中。外部应用程序不应在“选择文件或文件夹”对话框中向MRU列表添加路径。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/wl</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /wl</span><br></pre></td></tr></table></figure>
 
 <p>以只读方式打开左侧。当您不想更改比较中的左侧项目时，请使用此选项。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/wm</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /wm</span><br></pre></td></tr></table></figure>
 
 <p>以只读方式打开中间面。当您不想更改比较中的右侧项目时，请使用此选项。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/wr</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /wr</span><br></pre></td></tr></table></figure>
 
 <p>以只读方式打开右侧。当您不想更改比较中的右侧项目时，请使用此选项。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/minimize</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /minimize</span><br></pre></td></tr></table></figure>
 
 <p>作为最小化窗口启动WinMerge。在进行长时间比较时，此选项很有用。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/maximize</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /maximize</span><br></pre></td></tr></table></figure>
 
 <p>将WinMerge作为最大化窗口启动。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/fl</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /fl</span><br></pre></td></tr></table></figure>
 
 <p>将焦点放在启动时的左侧</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/fm</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /fm</span><br></pre></td></tr></table></figure>
 
 <p>在启动时将焦点放在中间</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/fr</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /fr</span><br></pre></td></tr></table></figure>
 
 <p>将焦点放在启动时的右侧</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dl</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /dl</span><br></pre></td></tr></table></figure>
 
 <p>在左侧标题栏中指定说明，以覆盖默认的文件夹或文件名文本。例如：/dl “Version 1.0” 或 /dl WorkingCopy。在包含空格的说明周围使用引号。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dm</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /dm</span><br></pre></td></tr></table></figure>
 
 <p>与/dl一样，在中间标题栏中指定描述。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dr</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe /dr</span><br></pre></td></tr></table></figure>
 
 <p>与/dl一样，在右侧标题栏中指定描述。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">leftpath</span><br></pre></td></tr></table></figure>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/WinMerge.exe leftpath rightpath</span><br></pre></td></tr></table></figure>
 
-<p>指定要在左侧打开的文件夹，文件或项目文件。</p>
+<p>leftpath：指定要在左侧打开的文件夹，文件或项目文件。<br>rightpath：指定要在右侧打开的文件夹，文件或项目文件。</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">middlepath</span><br></pre></td></tr></table></figure>
 
 <p>指定要在中间打开的文件夹，文件或项目文件。</p>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rightpath</span><br></pre></td></tr></table></figure>
-
-<p>指定要在右侧打开的文件夹，文件或项目文件。</p>
 <p>WinMerge无法将文件与文件夹进行比较，因此两个路径参数（leftpath和rightpath）都必须指向相同的目标类型（文件夹或文件）。如果WinMerge找不到指定的路径之一，则会打开“选择文件或文件夹”对话框，您可以在其中浏览正确的路径。</p>
 
         
