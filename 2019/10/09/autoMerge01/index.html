@@ -11,7 +11,7 @@
     <meta name="author" content="Evan">
     <meta name="version" content="1.0.0">
     <meta name="keywords" content>
-    <meta name="description" content="差分自动化工具开发因为项目上频繁要对比多个开发环境的代码差分，每次都要切换不同环境提取代码再用WinMerge来对比修改的内容。所以为了提高开发效率希望开发一个差分自动化的小工具。希望能完成以下功能：自动输出不同环境的差分文件自动提取开发环境（Salesforce Org）最新代码自动提取Git branch的代码其中基于WinMerge的命令行就可以完成自动输出不同环境的差分文件。WinMerge的命令行WinMerge是一款运行于Windows系统下的免费开源的文件比较/合...">
+    <meta name="description" content="差分自动化工具开发因为项目上频繁要对比多个开发环境的代码差分，每次都要切换不同环境提取代码再用WinMerge来对比修改的内容。所以为了提高开发效率希望开发一个差分自动化的小工具。希望能完成以下功能：自动输出不同环境的差分文件自动提取开发环境（Salesforce Org）最新代码自动提取Git branch的代码其中基于WinMerge的命令行就可以完成自动输出不同环境的差分文件。WinMerge的命令行WinMerge是一款运行于Windows系统下的免费开源的文件比较/...">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 
@@ -120,8 +120,9 @@
 <ul>
 <li>自动输出不同环境的差分文件</li>
 <li>自动提取开发环境（Salesforce Org）最新代码</li>
-<li>自动提取Git branch的代码<br>其中基于WinMerge的命令行就可以完成自动输出不同环境的差分文件。</li>
+<li>自动提取Git branch的代码</li>
 </ul>
+<p>其中基于WinMerge的命令行就可以完成自动输出不同环境的差分文件。</p>
 <h3 id="WinMerge的命令行"><a href="#WinMerge的命令行" class="headerlink" title="WinMerge的命令行"></a>WinMerge的命令行</h3><p>WinMerge是一款运行于Windows系统下的免费开源的文件比较/合并工具，使用它可以非常方便地比较多个文档内容甚至是文件夹与文件夹之间的文件差异。并且WinMerge提供了命令行，可以用作这次差分工具的核心。</p>
 <p>WinMerge命令行除了要比较的路径外，还接受其他几个参数。这些参数大多数用于将WinMerge用作外部比较应用程序或从批处理文件。</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">"路径/WinMerge.exe" [/r] [/e] [/f filter] [/x] [/xq] [/s] [/ul] [/um] [/ur] [/u] [/wl] [/wm] [/wr]</span><br><span class="line">  [/minimize] [/maximize] [/fl] [/fm] [/fr] [/dl leftdesc] [/dm middledesc] [/dr rightdesc] leftpath [middlepath] rightpath [/o outputpath] [/al] [/am] [/ar]</span><br></pre></td></tr></table></figure>
@@ -207,6 +208,8 @@
 
 <a id="pagenext" href="/SalesforceBlog/2019/09/29/news01/" class="article-next" title="Salesforce携手阿里巴巴扩大在华业务"><i class="icon-arrow-right"></i></a>
 
+
+<a id="pageprev" href="/SalesforceBlog/2019/11/09/autoMerge02/" class="article-prev" title="差分自动化工具02-基于WinMerge的命令行"><i class="icon-arrow-left"></i></a>
 
 
 

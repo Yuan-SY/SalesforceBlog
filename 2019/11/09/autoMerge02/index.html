@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+
+    
+
+    
+
+    <title>差分自动化工具02-基于WinMerge的命令行 | Evan&#39;s Salesforce</title>
+    <meta name="author" content="Evan">
+    <meta name="version" content="1.0.0">
+    <meta name="keywords" content>
+    <meta name="description" content="差分自动化工具开发123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    <link rel="alternate" href="/atom.xml" title="Evan&#39;s Salesforce" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/SalesforceBlog/css/style.css">
+</head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">Evan&#39;s Salesforce</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/SalesforceBlog/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/SalesforceBlog/categories/front-end">
+                <span class="nav-text">前端</span>
+            </a>
+        
+            <a class="nav-item" href="/SalesforceBlog/categories/back-end">
+                <span class="nav-text">后端</span>
+            </a>
+        
+            <a class="nav-item" href="/SalesforceBlog/tags">
+                <span class="nav-text">标签</span>
+            </a>
+        
+            <a class="nav-item" href="/SalesforceBlog/archives">
+                <span class="nav-text">归档</span>
+            </a>
+        
+            <a class="nav-item" href="/SalesforceBlog/atom.xml">
+                <span class="nav-text">订阅</span>
+            </a>
+        
+            <a class="nav-item" href="/SalesforceBlog/about">
+                <span class="nav-text">关于</span>
+            </a>
+        
+    </nav>
+</div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="https://yuan-sy.github.io/SalesforceBlog"></form>
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#差分自动化工具开发"><span class="toc-number">1.</span> <span class="toc-text">差分自动化工具开发</span></a></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <div id="wrapper" class="wrapper" style="max-width: 800px">
+                <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            差分自动化工具02-基于WinMerge的命令行
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="https://yuan-sy.github.io/SalesforceBlog/2019/11/09/autoMerge02/index.html">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2019-11-08T17:31:43.000Z" itemprop="datePublished">2019-11-09</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/SalesforceBlog/tags/Other/">Other</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h2 id="差分自动化工具开发"><a href="#差分自动化工具开发" class="headerlink" title="差分自动化工具开发"></a>差分自动化工具开发</h2><a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.doc.samples;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">import</span> java.nio.ByteBuffer;</span><br><span class="line"><span class="keyword">import</span> java.nio.channels.*;</span><br><span class="line"><span class="keyword">import</span> java.rmi.RemoteException;</span><br><span class="line"><span class="keyword">import</span> javax.xml.parsers.DocumentBuilder;</span><br><span class="line"><span class="keyword">import</span> javax.xml.parsers.DocumentBuilderFactory;</span><br><span class="line"><span class="keyword">import</span> javax.xml.parsers.ParserConfigurationException;</span><br><span class="line"><span class="keyword">import</span> org.w3c.dom.Element;</span><br><span class="line"><span class="keyword">import</span> org.w3c.dom.Node;</span><br><span class="line"><span class="keyword">import</span> org.w3c.dom.NodeList;</span><br><span class="line"><span class="keyword">import</span> org.xml.sax.SAXException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.sforce.soap.metadata.AsyncResult;</span><br><span class="line"><span class="keyword">import</span> com.sforce.soap.metadata.MetadataConnection;</span><br><span class="line"><span class="keyword">import</span> com.sforce.soap.enterprise.EnterpriseConnection;</span><br><span class="line"><span class="keyword">import</span> com.sforce.soap.metadata.RetrieveMessage;</span><br><span class="line"><span class="keyword">import</span> com.sforce.soap.metadata.RetrieveRequest;</span><br><span class="line"><span class="keyword">import</span> com.sforce.soap.metadata.RetrieveResult;</span><br><span class="line"><span class="keyword">import</span> com.sforce.soap.metadata.RetrieveStatus;</span><br><span class="line"><span class="keyword">import</span> com.sforce.soap.enterprise.LoginResult;</span><br><span class="line"><span class="keyword">import</span> com.sforce.ws.ConnectionException;</span><br><span class="line"><span class="keyword">import</span> com.sforce.ws.ConnectorConfig;</span><br><span class="line"><span class="keyword">import</span> com.sforce.soap.metadata.PackageTypeMembers;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RetrieveSample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Binding for the metadata WSDL used for making metadata API calls</span></span><br><span class="line">    <span class="keyword">private</span> MetadataConnection metadataConnection;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> BufferedReader rdr = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// one second in milliseconds</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> ONE_SECOND = <span class="number">1000</span>;</span><br><span class="line">    <span class="comment">// maximum number of attempts to retrieve the results</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_NUM_POLL_REQUESTS = <span class="number">50</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// manifest file that controls which components get retrieved</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String MANIFEST_FILE = <span class="string">"package.xml"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> API_VERSION = <span class="number">31.0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> String USERNAME = <span class="string">"user@company.com"</span>;</span><br><span class="line">        <span class="comment">// This is only a sample. Hard coding passwords in source files is a bad practice.</span></span><br><span class="line">        <span class="keyword">final</span> String PASSWORD = <span class="string">"password"</span>;</span><br><span class="line">        <span class="keyword">final</span> String URL = <span class="string">"https://login.salesforce.com/services/Soap/c/31.0"</span>;</span><br><span class="line"></span><br><span class="line">        RetrieveSample sample = <span class="keyword">new</span> RetrieveSample(USERNAME, PASSWORD, URL);</span><br><span class="line">        sample.retrieveZip();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RetrieveSample</span><span class="params">(String username, String password, String loginUrl)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> ConnectionException </span>&#123;</span><br><span class="line">        createMetadataConnection(username, password, loginUrl);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">retrieveZip</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException, Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        RetrieveRequest retrieveRequest = <span class="keyword">new</span> RetrieveRequest();</span><br><span class="line">        <span class="comment">// The version in package.xml overrides the version in RetrieveRequest</span></span><br><span class="line">        retrieveRequest.setApiVersion(API_VERSION);</span><br><span class="line">        setUnpackaged(retrieveRequest);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Start the retrieve operation</span></span><br><span class="line">        AsyncResult asyncResult = metadataConnection.retrieve(retrieveRequest);</span><br><span class="line">        String asyncResultId = asyncResult.getId();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Wait for the retrieve to complete</span></span><br><span class="line">        <span class="keyword">int</span> poll = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> waitTimeMilliSecs = ONE_SECOND;</span><br><span class="line">        RetrieveResult result = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            Thread.sleep(waitTimeMilliSecs);</span><br><span class="line">            <span class="comment">// Double the wait time for the next iteration</span></span><br><span class="line">            waitTimeMilliSecs *= <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (poll++ &gt; MAX_NUM_POLL_REQUESTS) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Request timed out.  If this is a large set "</span> +</span><br><span class="line">                <span class="string">"of metadata components, check that the time allowed "</span> +</span><br><span class="line">                <span class="string">"by MAX_NUM_POLL_REQUESTS is sufficient."</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            result = metadataConnection.checkRetrieveStatus(</span><br><span class="line">                    asyncResultId, <span class="keyword">true</span>);</span><br><span class="line">            System.out.println(<span class="string">"Retrieve Status: "</span> + result.getStatus());</span><br><span class="line">        &#125; <span class="keyword">while</span> (!result.isDone());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (result.getStatus() == RetrieveStatus.Failed) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(result.getErrorStatusCode() + <span class="string">" msg: "</span> +</span><br><span class="line">                    result.getErrorMessage());</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (result.getStatus() == RetrieveStatus.Succeeded) &#123;      </span><br><span class="line">            <span class="comment">// Print out any warning messages</span></span><br><span class="line">            StringBuilder buf = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">if</span> (result.getMessages() != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span> (RetrieveMessage rm : result.getMessages()) &#123;</span><br><span class="line">                    buf.append(rm.getFileName() + <span class="string">" - "</span> + rm.getProblem());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (buf.length() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">"Retrieve warnings:\n"</span> + buf);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Write the zip to the file system</span></span><br><span class="line">            System.out.println(<span class="string">"Writing results to zip file"</span>);</span><br><span class="line">            ByteArrayInputStream bais = <span class="keyword">new</span> ByteArrayInputStream(result.getZipFile());</span><br><span class="line">            File resultsFile = <span class="keyword">new</span> File(<span class="string">"retrieveResults.zip"</span>);</span><br><span class="line">            FileOutputStream os = <span class="keyword">new</span> FileOutputStream(resultsFile);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                ReadableByteChannel src = Channels.newChannel(bais);</span><br><span class="line">                FileChannel dest = os.getChannel();</span><br><span class="line">                copy(src, dest);</span><br><span class="line"></span><br><span class="line">                System.out.println(<span class="string">"Results written to "</span> + resultsFile.getAbsolutePath());</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                os.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Helper method to copy from a readable channel to a writable channel,</span></span><br><span class="line"><span class="comment">     * using an in-memory buffer.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">copy</span><span class="params">(ReadableByteChannel src, WritableByteChannel dest)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> IOException</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// Use an in-memory byte buffer</span></span><br><span class="line">        ByteBuffer buffer = ByteBuffer.allocate(<span class="number">8092</span>);</span><br><span class="line">        <span class="keyword">while</span> (src.read(buffer) != -<span class="number">1</span>) &#123;</span><br><span class="line">            buffer.flip();</span><br><span class="line">            <span class="keyword">while</span>(buffer.hasRemaining()) &#123;</span><br><span class="line">                dest.write(buffer);</span><br><span class="line">            &#125;</span><br><span class="line">            buffer.clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setUnpackaged</span><span class="params">(RetrieveRequest request)</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// Edit the path, if necessary, if your package.xml file is located elsewhere</span></span><br><span class="line">        File unpackedManifest = <span class="keyword">new</span> File(MANIFEST_FILE);</span><br><span class="line">        System.out.println(<span class="string">"Manifest file: "</span> + unpackedManifest.getAbsolutePath());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!unpackedManifest.exists() || !unpackedManifest.isFile())</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Should provide a valid retrieve manifest "</span> +</span><br><span class="line">                    <span class="string">"for unpackaged content. "</span> +</span><br><span class="line">                    <span class="string">"Looking for "</span> + unpackedManifest.getAbsolutePath());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Note that we populate the _package object by parsing a manifest file here.</span></span><br><span class="line">        <span class="comment">// You could populate the _package based on any source for your</span></span><br><span class="line">        <span class="comment">// particular application.</span></span><br><span class="line">        com.sforce.soap.metadata.Package p = parsePackage(unpackedManifest);</span><br><span class="line">        request.setUnpackaged(p);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> com.sforce.soap.metadata.<span class="function">Package <span class="title">parsePackage</span><span class="params">(File file)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            InputStream is = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">            List&lt;PackageTypeMembers&gt; pd = <span class="keyword">new</span> ArrayList&lt;PackageTypeMembers&gt;();</span><br><span class="line">            DocumentBuilder db =</span><br><span class="line">                DocumentBuilderFactory.newInstance().newDocumentBuilder();</span><br><span class="line">            Element d = db.parse(is).getDocumentElement();</span><br><span class="line">            <span class="keyword">for</span> (Node c = d.getFirstChild(); c != <span class="keyword">null</span>; c = c.getNextSibling()) &#123;</span><br><span class="line">                <span class="keyword">if</span> (c <span class="keyword">instanceof</span> Element) &#123;</span><br><span class="line">                    Element ce = (Element)c;</span><br><span class="line">                    <span class="comment">//</span></span><br><span class="line">                    NodeList namee = ce.getElementsByTagName(<span class="string">"name"</span>);</span><br><span class="line">                    <span class="keyword">if</span> (namee.getLength() == <span class="number">0</span>) &#123;</span><br><span class="line">                        <span class="comment">// not</span></span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    String name = namee.item(<span class="number">0</span>).getTextContent();</span><br><span class="line">                    NodeList m = ce.getElementsByTagName(<span class="string">"members"</span>);</span><br><span class="line">                    List&lt;String&gt; members = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m.getLength(); i++) &#123;</span><br><span class="line">                        Node mm = m.item(i);</span><br><span class="line">                        members.add(mm.getTextContent());</span><br><span class="line">                    &#125;</span><br><span class="line">                    PackageTypeMembers pdi = <span class="keyword">new</span> PackageTypeMembers();</span><br><span class="line">                    pdi.setName(name);</span><br><span class="line">                    pdi.setMembers(members.toArray(<span class="keyword">new</span> String[members.size()]));</span><br><span class="line">                    pd.add(pdi);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            com.sforce.soap.metadata.Package r = <span class="keyword">new</span> com.sforce.soap.metadata.Package();</span><br><span class="line">            r.setTypes(pd.toArray(<span class="keyword">new</span> PackageTypeMembers[pd.size()]));</span><br><span class="line">            r.setVersion(API_VERSION + <span class="string">""</span>);</span><br><span class="line">            <span class="keyword">return</span> r;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ParserConfigurationException pce) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Cannot create XML parser"</span>, pce);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException ioe) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(ioe);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SAXException se) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(se);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">createMetadataConnection</span><span class="params">(<span class="keyword">final</span> String username,</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="keyword">final</span> String password, <span class="keyword">final</span> String loginUrl)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> ConnectionException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> ConnectorConfig loginConfig = <span class="keyword">new</span> ConnectorConfig();</span><br><span class="line">        loginConfig.setAuthEndpoint(loginUrl);</span><br><span class="line">        loginConfig.setServiceEndpoint(loginUrl);</span><br><span class="line">        loginConfig.setManualLogin(<span class="keyword">true</span>);</span><br><span class="line">        LoginResult loginResult = (<span class="keyword">new</span> EnterpriseConnection(loginConfig)).login(</span><br><span class="line">                username, password);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> ConnectorConfig metadataConfig = <span class="keyword">new</span> ConnectorConfig();</span><br><span class="line">        metadataConfig.setServiceEndpoint(loginResult.getMetadataServerUrl());</span><br><span class="line">        metadataConfig.setSessionId(loginResult.getSessionId());</span><br><span class="line">        <span class="keyword">this</span>.metadataConnection = <span class="keyword">new</span> MetadataConnection(metadataConfig);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//The sample client application retrieves the user's login credentials.</span></span><br><span class="line">    <span class="comment">// Helper function for retrieving user input from the console</span></span><br><span class="line">    <span class="function">String <span class="title">getUserInput</span><span class="params">(String prompt)</span> </span>&#123;</span><br><span class="line">        System.out.print(prompt);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> rdr.readLine();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a src="https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_retrieve.htm">Metadata API Developer Guide</a></p>
+
+        
+    </section>
+</article>
+
+
+
+<a id="pagenext" href="/SalesforceBlog/2019/10/09/autoMerge01/" class="article-next" title="差分自动化工具01-基于WinMerge的命令行"><i class="icon-arrow-right"></i></a>
+
+
+
+
+
+            </div>
+        </div>
+        <footer class="footer">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?e4027971a230b210f4671f485b33846a";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+            
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle();
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp();
+            }, 3000);
+        }
+    });
+    </script>
+    
+        <script type="text/javascript" src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                pageprev.css($.extend({left: hw + len}, styles));
+                pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>
